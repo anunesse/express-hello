@@ -1,0 +1,423 @@
+{
+	"info": {
+		"name": "express-hello",
+		"_postman_id": "5dd1d9d3-45f4-bdc1-15d4-482288a8c78d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"ok\", function () {",
+							"     pm.response.to.be.ok;",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json;",
+							"     ",
+							"     pm.expect(pm.response.json()).to.eql([",
+							"        {",
+							"            \"id\": 0,",
+							"            \"name\": \"cat zero\"",
+							"        },",
+							"        {",
+							"            \"id\": 1,",
+							"            \"name\": \"cat 1\"",
+							"        }",
+							"    ]);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"id\":1,\n\"name\": \"cat 1\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/private/categories",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"private",
+						"categories"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"ok\", function () {",
+							"     pm.response.to.be.ok;",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json;",
+							"     ",
+							"     pm.expect(pm.response.json()).to.eql({",
+							"        \"id\": 1,",
+							"        \"name\": \"cat 1 edited\"",
+							"    });",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"id\":1,\n\"name\": \"cat 1 edited\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/private/categories",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"private",
+						"categories"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"ok\", function () {",
+							"     pm.response.to.be.ok;",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json;",
+							"     ",
+							"     pm.expect(pm.response.json()).to.eql([",
+							"        {",
+							"            \"id\": 0,",
+							"            \"name\": \"cat zero\"",
+							"        }",
+							"    ]);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/api/private/categories/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"private",
+						"categories",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "READ categories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"ok\", function () {",
+							"     pm.response.to.be.ok;",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json;",
+							"     ",
+							"     pm.expect(pm.response.json()).to.eql([",
+							"        {",
+							"            \"id\": 0,",
+							"            \"name\": \"cat zero\"",
+							"        }",
+							"    ]);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/api/categories",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"categories"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "READ products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"ok\", function () {",
+							"     pm.response.to.be.ok;",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json;",
+							"     ",
+							"     pm.expect(pm.response.json()).to.eql([",
+							"        {",
+							"            \"id\": 0,",
+							"            \"barCode\": \"\",",
+							"            \"name\": \"prod zero\",",
+							"            \"description\": \"prod zero desc\",",
+							"            \"categories\": [",
+							"                0",
+							"            ]",
+							"        }",
+							"    ]);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/api/products",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"products"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"ok\", function () {",
+							"     pm.response.to.be.ok;",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json;",
+							"     ",
+							"     pm.expect(pm.response.json()).to.eql([",
+							"        {",
+							"            \"id\": 0,",
+							"            \"barCode\": \"\",",
+							"            \"name\": \"prod zero\",",
+							"            \"description\": \"prod zero desc\",",
+							"            \"categories\": [",
+							"                0",
+							"            ]",
+							"        },",
+							"        {",
+							"            \"id\": 1,",
+							"            \"barCode\": \"\",",
+							"            \"name\": \"prod un\",",
+							"            \"description\": \"prod un desc\",",
+							"            \"categories\": [",
+							"                1",
+							"            ]",
+							"        }",
+							"    ]);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": 1,\n        \"barCode\": \"\",\n        \"name\": \"prod un\",\n        \"description\": \"prod un desc\",\n        \"categories\": [\n            1\n        ]\n    }"
+				},
+				"url": {
+					"raw": "localhost:3000/api/private/products",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"private",
+						"products"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"ok\", function () {",
+							"     pm.response.to.be.ok;",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json;",
+							"     ",
+							"     pm.expect(pm.response.json()).to.eql({",
+							"        \"id\": 1,",
+							"        \"barCode\": \"\",",
+							"        \"name\": \"prod un edited\",",
+							"        \"description\": \"prod un desc edited\",",
+							"        \"categories\": [",
+							"            1",
+							"        ]",
+							"    });",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": 1,\n        \"barCode\": \"\",\n        \"name\": \"prod un edited\",\n        \"description\": \"prod un desc edited\",\n        \"categories\": [\n            1\n        ]\n    }"
+				},
+				"url": {
+					"raw": "localhost:3000/api/private/products",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"private",
+						"products"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"ok\", function () {",
+							"     pm.response.to.be.ok;",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json;",
+							"     ",
+							"     pm.expect(pm.response.json()).to.eql([",
+							"        {",
+							"            \"id\": 0,",
+							"            \"barCode\": \"\",",
+							"            \"name\": \"prod zero\",",
+							"            \"description\": \"prod zero desc\",",
+							"            \"categories\": [",
+							"                0",
+							"            ]",
+							"        }",
+							"    ]);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/api/private/products/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"private",
+						"products",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

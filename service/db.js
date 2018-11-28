@@ -17,15 +17,41 @@ module.exports =  {
     readCategories() {
         return categories;
     },
-    readCategories(id) {
+    readCategory(id) {
         return _.find(categories, {id});
+    },
+    createCategory(category) {
+        categories.push(category);
+        return categories;
+    },
+    updateCategory(category) {
+        let index = _.findIndex(categories, {id: category.id});
+        categories.splice(index, 1, category);
+        return category;
+    },
+    deleteCategory(id) {
+        _.remove(categories, {id});
+        return categories;
     },
 
 
     readProducts() {
         return products;
     },
-    readProducts(id) {
-        return _.find(products, {id: id});
-    }
+    readProduct(id) {
+        return _.find(products, {id});
+    },
+    createProduct(product) {
+        products.push(product);
+        return products;
+    },
+    updateProduct(product) {
+        let index = _.findIndex(products, {id: product.id});
+        products.splice(index, 1, product);
+        return product;
+    },
+    deleteProduct(id) {
+        _.remove(products, {id});
+        return products;
+    },
 };
